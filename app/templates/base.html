@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Encuestas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if url_for %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  {% endif %}
+</head>
+<body>
+  <header>
+    <h1>Encuestas</h1>
+    <nav>
+      {% if current_user.is_authenticated %}
+        <a href="{{ url_for('encuesta') }}">Encuesta</a>
+        <a href="{{ url_for('resultados') }}">Resultados</a>
+        <a href="{{ url_for('logout') }}">Salir</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Iniciar sesión</a>
+        <a href="{{ url_for('registro') }}">Registrarme</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main>
+    {% with msgs = get_flashed_messages() %}
+      {% if msgs %}
+        <div class="flash">
+          {% for m in msgs %}<p>{{ m }}</p>{% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
