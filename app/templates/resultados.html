@@ -2,16 +2,16 @@
 {% block content %}
 <h2>Resultados</h2>
 {% if total == 0 %}
-<p>Todavía no hay votos.</p>
+  <p>Todavía no hay votos.</p>
 {% else %}
-<table>
-  <thead><tr><th>Opción</th><th>Votos</th></tr></thead>
-  <tbody>
-    {% for op, c in conteo.items() %}
-    <tr><td>{{ op }}</td><td>{{ c }}</td></tr>
-    {% endfor %}
-  </tbody>
-</table>
-<p><strong>Total:</strong> {{ total }}</p>
+  <table>
+    <thead><tr><th>Opción</th><th>Votos</th></tr></thead>
+    <tbody>
+      {% for op, c in conteo.items() %}
+        <tr><td>{{ op }}</td><td>{{ c }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p><strong>Total:</strong> {{ total }}</p>
 {% endif %}
 {% endblock %}

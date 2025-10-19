@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Encuesta</h2>
-
 {% if ya_voto %}
-<p>Ya registraste tu voto. Puedes ver los <a href="{{ url_for('resultados') }}">resultados</a>.</p>
+  <p>Ya registraste tu voto. Puedes ver los <a href="{{ url_for('resultados') }}">resultados</a>.</p>
 {% else %}
-<form method="POST">
-  <p>¿Cuál es tu lenguaje de programación favorito?</p>
-  {% for op in opciones %}
-    <label><input type="radio" name="opcion" value="{{ op }}" required> {{ op }}</label><br>
-  {% endfor %}
-  <br>
-  <button type="submit">Votar</button>
-</form>
+  <form method="POST">
+    <p>¿Cuál es tu lenguaje de programación favorito?</p>
+    {% for op in opciones %}
+      <label><input type="radio" name="opcion" value="{{ op }}" required> {{ op }}</label><br>
+    {% endfor %}
+    <br>
+    <button type="submit">Votar</button>
+  </form>
 {% endif %}
 {% endblock %}
